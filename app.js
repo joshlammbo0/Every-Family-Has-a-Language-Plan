@@ -51,9 +51,9 @@
   const navLinks = $$('.site-nav a');
   const sections = navLinks.map((a) => $(a.getAttribute('href'))).filter(Boolean);
   const hero = $('#top');
-  let ticking = false;
+  let navTimer = null;
   function updateActiveNav() {
-    ticking = false;
+    navTimer = null;
     const probe = window.scrollY + headerH() + 24;
     let current = null;
     const pastHero = !hero || probe >= hero.offsetTop + hero.offsetHeight;
@@ -64,7 +64,7 @@
       else a.removeAttribute('aria-current');
     });
   }
-  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(updateActiveNav); } }
+  function onScroll() { if (navTimer === null) navTimer = setTimeout(updateActiveNav, 60); }
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   window.addEventListener('load', updateActiveNav);
