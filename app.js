@@ -13,41 +13,74 @@
   /* ------------------------------------------------------------------ */
   const navToggle = $('.nav-toggle');
   const nav = $('#site-nav');
+  const header = $('.site-header');
+  function headerH() { return header ? header.offsetHeight : 64; }
+  function setHeaderVar() { document.documentElement.style.setProperty('--header-h', headerH() + 'px'); }
+  setHeaderVar();
+  window.addEventListener('resize', setHeaderVar);
+
+  function setMenu(open, { focusFirst = false, returnFocus = false } = {}) {
+    if (!navToggle || !nav) return;
+    nav.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    if (open && focusFirst) { const first = nav.querySelector('a'); if (first) first.focus(); }
+    if (!open && returnFocus) navToggle.focus();
+  }
   if (navToggle && nav) {
-    navToggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(open));
-    });
-    nav.addEventListener('click', (e) => {
-      if (e.target.closest('a')) {
-        nav.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
+    navToggle.setAttribute('aria-label', 'Open menu');
+    navToggle.addEventListener('click', () => setMenu(!nav.classList.contains('open'), { focusFirst: true }));
+    nav.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.focus();
-      }
+      if (e.key === 'Escape' && nav.classList.contains('open')) setMenu(false, { returnFocus: true });
+    });
+    document.addEventListener('click', (e) => {
+      if (nav.classList.contains('open') && !e.target.closest('.site-header')) setMenu(false);
+    });
+    window.addEventListener('resize', () => { if (window.innerWidth > 1040 && nav.classList.contains('open')) setMenu(false); });
+    // Keep keyboard focus inside the open menu on small screens: Tab past the last link closes it
+    nav.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab' || !nav.classList.contains('open')) return;
+      const links = $$('a', nav); const last = links[links.length - 1];
+      if (!e.shiftKey && document.activeElement === last) { setMenu(false); }
+      if (e.shiftKey && document.activeElement === links[0]) { e.preventDefault(); navToggle.focus(); }
     });
   }
 
-  /* Highlight the current section in the nav */
+  /* Highlight the current section in the nav (none while on the hero) */
   const navLinks = $$('.site-nav a');
   const sections = navLinks.map((a) => $(a.getAttribute('href'))).filter(Boolean);
-  if ('IntersectionObserver' in window && sections.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navLinks.forEach((a) => a.removeAttribute('aria-current'));
-          const link = navLinks.find((a) => a.getAttribute('href') === '#' + entry.target.id);
-          if (link) link.setAttribute('aria-current', 'true');
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
-    sections.forEach((s) => io.observe(s));
+  const hero = $('#top');
+  let ticking = false;
+  function updateActiveNav() {
+    ticking = false;
+    const probe = window.scrollY + headerH() + 24;
+    let current = null;
+    const pastHero = !hero || probe >= hero.offsetTop + hero.offsetHeight;
+    if (pastHero) sections.forEach((sec) => { if (sec.offsetTop <= probe) current = sec; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) current = sections[sections.length - 1];
+    navLinks.forEach((a) => {
+      if (current && a.getAttribute('href') === '#' + current.id) a.setAttribute('aria-current', 'true');
+      else a.removeAttribute('aria-current');
+    });
   }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(updateActiveNav); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', updateActiveNav);
+  updateActiveNav();
+
+  /* Hero strand labels open the matching FLP card */
+  $$('.weave-label[data-open]').forEach((lab) => {
+    lab.addEventListener('click', (e) => {
+      const card = $(`.flp-card[data-detail="${lab.dataset.open}"]`);
+      if (!card) return;
+      e.preventDefault();
+      if (card.getAttribute('aria-expanded') !== 'true') card.click();
+      $('#what').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => card.focus({ preventScroll: true }), 400);
+    });
+  });
 
   /* ------------------------------------------------------------------ */
   /* FLP three-card explainer                                            */
@@ -195,7 +228,7 @@
   const btnBack = $('#btn-back');
   const btnNext = $('#btn-next');
   const btnReset = $('#btn-reset');
-  const errBox = $('#form-error');
+  const announcer = $('#form-announcer');
   const progressBar = $('#progress-bar');
   const output = $('#plan-output');
   const TOTAL = 7;
@@ -222,27 +255,54 @@
     };
   }
 
+  // Returns null when valid, otherwise { msg, el } where el is the control to focus.
   function validate(step) {
     const a = getAnswers();
+    const first = (sel) => $(sel, form);
     switch (step) {
       case 1:
-        if (!a.langTarget) return 'Please name the language you want to grow or protect.';
-        if (/\d/.test(a.langTarget) || a.langTarget.length < 2) return 'That does not look like a language name. Just the language, please.';
-        if (!a.why.length) return 'Pick at least one reason — it becomes the "why" on your plan.';
-        return '';
+        if (!a.langTarget) return { msg: 'Please name the language you want to grow or protect.', el: first('#lang-target') };
+        if (/\d/.test(a.langTarget) || a.langTarget.length < 2) return { msg: 'That does not look like a language name. Just the language, please.', el: first('#lang-target') };
+        if (!a.why.length) return { msg: 'Pick at least one reason — it becomes the "why" on your plan.', el: first('input[name="why"]') };
+        return null;
       case 2:
-        if (!a.me) return 'Tell us how comfortable you are in the target language.';
-        if (!a.partner) return 'Choose an option for a partner or co-parent (or "No co-parent").';
-        if (!a.relatives) return 'Choose an option for grandparents or relatives.';
-        if (!a.caregiver) return 'Choose an option for other caregivers (or "Not applicable").';
-        return '';
-      case 3: return a.stage ? '' : 'Pick the stage closest to your family.';
-      case 4: return a.support.length ? '' : 'Choose at least one option — "Nothing yet" is a fine answer.';
-      case 5: return a.routine.length ? '' : 'Pick at least one routine where the language could fit.';
-      case 6: return a.goal ? '' : 'Choose the goal that matters most right now.';
-      default: return '';
+        if (!a.me) return { msg: 'Tell us how comfortable you are in the target language (first row).', el: first('input[name="speakerMe"]') };
+        if (!a.partner) return { msg: 'Choose an option for a partner or co-parent, or "No co-parent".', el: first('input[name="speakerPartner"]') };
+        if (!a.relatives) return { msg: 'Choose an option for grandparents or relatives.', el: first('input[name="speakerRelatives"]') };
+        if (!a.caregiver) return { msg: 'Choose an option for other caregivers, or "Not applicable".', el: first('input[name="speakerCaregiver"]') };
+        return null;
+      case 3: return a.stage ? null : { msg: 'Pick the stage closest to your family.', el: first('input[name="stage"]') };
+      case 4: return a.support.length ? null : { msg: 'Choose at least one option — "Nothing yet" is a fine answer.', el: first('input[name="support"]') };
+      case 5: return a.routine.length ? null : { msg: 'Pick at least one routine where the language could fit.', el: first('input[name="routine"]') };
+      case 6: return a.goal ? null : { msg: 'Choose the goal that matters most right now.', el: first('input[name="goal"]') };
+      default: return null;
     }
   }
+  function clearErrors() {
+    $$('.step-error', form).forEach((e) => { e.hidden = true; e.textContent = ''; });
+    $$('[aria-invalid="true"]', form).forEach((e) => e.removeAttribute('aria-invalid'));
+    $$('.is-invalid', form).forEach((e) => e.classList.remove('is-invalid'));
+  }
+  function showError(step, { msg, el }) {
+    const st = steps[step - 1];
+    let err = $('.step-error', st);
+    if (!err) {
+      err = document.createElement('p');
+      err.className = 'step-error'; err.id = 'step-error-' + step;
+      ($('.req-note', st) || $('.help', st) || $('h3', st)).after(err);
+    }
+    err.textContent = msg; err.hidden = false;
+    if (announcer) { announcer.textContent = ''; setTimeout(() => { announcer.textContent = msg; }, 50); }
+    if (el) {
+      el.setAttribute('aria-invalid', 'true');
+      el.setAttribute('aria-describedby', err.id);
+      const group = el.closest('.speaker-row') || el.closest('fieldset') || el;
+      group.classList.add('is-invalid');
+      el.focus();
+    }
+  }
+  form.addEventListener('change', clearErrors);
+  form.addEventListener('input', (e) => { if (e.target.matches('input[type="text"]')) clearErrors(); });
 
   function showStep(n) {
     current = n;
@@ -261,7 +321,7 @@
     } else {
       btnNext.textContent = 'Next';
     }
-    errBox.hidden = true;
+    clearErrors();
     const heading = $('h3', steps[n - 1]) || steps[n - 1];
     heading.setAttribute('tabindex', '-1');
     heading.focus({ preventScroll: true });
@@ -271,12 +331,8 @@
 
   btnNext.addEventListener('click', () => {
     if (current === TOTAL) { showStep(TOTAL); return; }
-    const msg = validate(current);
-    if (msg) {
-      errBox.textContent = msg;
-      errBox.hidden = false;
-      return;
-    }
+    const problem = validate(current);
+    if (problem) { showError(current, problem); return; }
     if (current === TOTAL - 1) renderPlan(getAnswers());
     showStep(current + 1);
   });
@@ -295,6 +351,7 @@
 
   /* ---------------- Plan content library ---------------- */
 
+  const WHY_SHORT = { relatives: 'Talking with relatives', identity: 'Identity and belonging', faith: 'Faith and community', future: 'Future opportunities', home: 'Our home language', love: 'Love of the language' };
   const WHY_TEXT = {
     relatives: 'so our child can talk with grandparents and relatives in their own words',
     identity: 'because it is part of who we are and where we belong',
@@ -334,7 +391,7 @@
       label: 'preschooler',
       goal: (L) => `Keep ${L} alive as the community language takes off: protected daily routines plus at least one new ${L} speaker in your child's week.`,
       revisit: 'Revisit at the start of each preschool or school year. Expect dips in output when the community language surges, and respond with more exposure rather than pressure.',
-      note: 'Preschoolers often start answering in the community language. That is a normal "dilingual" pattern, not failure; the child understands and is making a social choice. Recast warmly and keep going.'
+      note: 'Preschoolers often start answering in the community language. That is a normal two-language pattern (researchers call it "dilingual"), not failure; the child understands and is making a social choice. Recast warmly and keep going.'
     },
     school: {
       label: 'school-age',
@@ -379,28 +436,6 @@
     }
   };
 
-  function exposureNote(a, L) {
-    const fluentAdults = (a.me === 'fluent' ? 1 : 0) + (a.partner === 'fluent' ? 1 : 0);
-    const someAdults = (a.me === 'some' ? 1 : 0) + (a.partner === 'some' ? 1 : 0);
-    const notes = [];
-    if (fluentAdults === 0 && someAdults === 0) {
-      notes.push(`Nobody in the household is yet comfortable in ${L}. That is a real constraint, not a disqualification: research links a child's skill in a language to how much of it they hear and from how many fluent speakers, so the plan below leans on relatives, community, and media while you rebuild your own ${L} alongside your child.`);
-    } else if (fluentAdults === 0) {
-      notes.push(`You (or your co-parent) can hold a conversation in ${L} but are not fully fluent. You can absolutely be a source of ${L} — especially for routines, songs, and warmth. Because children also benefit from input from fluent speakers and from a range of people, the plan asks you to widen the circle rather than carry it alone.`);
-    } else if (fluentAdults === 1 && a.partner === 'none') {
-      notes.push(`One fluent parent, one who does not speak ${L}. This is one of the most common setups and it can work — but it depends on the fluent parent keeping ${L} going even when the other parent is in the room, and on the non-speaking parent being genuinely okay with occasionally being left out. Talk about that explicitly; it prevents resentment later.`);
-    } else if (fluentAdults === 2) {
-      notes.push(`Both of you are fluent in ${L}. Research on nearly 1,900 bilingual families found that homes where both parents used the minority language, with at most one also using the community language, had the best odds of children actually speaking it. Consider making ${L} the default at home and letting the community supply ${esc(a.langCommunity)}.`);
-    } else {
-      notes.push(`You have one fluent speaker at home and a second adult with some ${L}. Let the fluent speaker anchor the daily routines and let the second adult join in at their level — participation matters more than perfection.`);
-    }
-    if (a.relatives === 'remote') notes.push(`Relatives who speak ${L} live far away: make video calls a <em>scheduled routine</em>, not an occasional event, and give them something to do together on the call.`);
-    if (a.relatives === 'nearby') notes.push(`Relatives nearby are your biggest asset. Ask them, explicitly, to stay in ${L} with your child even when the child answers in ${esc(a.langCommunity)}.`);
-    if (a.caregiver === 'yes') notes.push(`A caregiver who speaks ${L} adds a whole new voice. Ask them to use ${L} consistently; a different speaker is worth more than extra hours from the same one.`);
-    if (a.support.includes('none')) notes.push(`You have no outside support yet. Pick <em>one</em> to find this month — a playgroup, a weekend class, a community event, or a family that speaks ${L}. One new voice changes the arithmetic.`);
-    return notes;
-  }
-
   function pickRoutines(a) {
     const order = ['bath', 'reading', 'meals', 'morning', 'car', 'calls', 'play', 'cooking', 'weekend'];
     const chosen = order.filter((k) => a.routine.includes(k));
@@ -409,7 +444,31 @@
     return chosen.slice(0, 3);
   }
 
-  function renderPlan(a) {
+  function pickWiden(a, L, C) {
+    if (a.relatives === 'remote') return `Make video calls with the relatives who speak ${L} a <em>scheduled routine</em>, not an occasional event, and give them something to do together on the call: a book to hold up, a song, cooking instructions. A new voice adds something that extra hours from the same voice do not.`;
+    if (a.relatives === 'nearby') return `Ask the relatives nearby, explicitly, to stay in ${L} with your child even when the child answers in ${C}. A regular solo outing with a grandparent is worth more than any app.`;
+    if (a.caregiver === 'yes') return `Ask the caregiver who speaks ${L} to use it with your child consistently. A different speaker is worth more than extra hours from the same one.`;
+    if (a.support.includes('playgroup')) return `Turn the families who speak ${L} into a standing date: same park, same day, every other week. Hearing ${L} from other children is a different kind of input than hearing it from you.`;
+    if (a.support.includes('school')) return `Ask the heritage or bilingual program how to reinforce at home, and invite one classmate's family over. Ties between home and program make both stronger.`;
+    if (a.support.includes('faithcomm')) return `Pick one recurring event in your religious or cultural community and make it your child's ${L} event: same faces, same time, real conversation.`;
+    return `Find <em>one</em> new voice this month: a playgroup, a babysitter, a weekend class, a family that speaks ${L}, or a relative on a weekly call. Children's skill in a language tracks how much of it they hear and from how many people.`;
+  }
+  function householdNote(a, L) {
+    const fluentAdults = (a.me === 'fluent' ? 1 : 0) + (a.partner === 'fluent' ? 1 : 0);
+    const someAdults = (a.me === 'some' ? 1 : 0) + (a.partner === 'some' ? 1 : 0);
+    if (fluentAdults === 0 && someAdults === 0) return `Nobody in the household is yet comfortable in ${L}. That is a real constraint, not a disqualification: the plan leans on relatives, community, and media while you rebuild your own ${L} alongside your child. Songs, counting, and short routines are a fine place for you to start.`;
+    if (fluentAdults === 0) return `You (or your co-parent) can hold a conversation in ${L} but are not fully fluent. You can absolutely be a source of ${L}, especially for routines, songs, and warmth. Because children also benefit from fluent speakers and from a range of people, widen the circle rather than carry it alone.`;
+    if (fluentAdults === 1 && a.partner === 'none') return `One fluent parent, one who does not speak ${L}: one of the most common setups, and it works when the fluent parent keeps ${L} going even with the other parent in the room, and the other parent is genuinely okay with occasionally being left out. Talk about that explicitly; it prevents resentment later.`;
+    if (fluentAdults === 2) return `Both of you are fluent in ${L}. Research on nearly 1,900 bilingual families found that homes where both parents used the heritage (minority) language, with at most one also using the community language, had the best odds of children actually speaking it. Consider making ${L} the default at home and letting the community supply ${esc(cap(a.langCommunity))}.`;
+    return `One fluent speaker at home and a second adult with some ${L}: let the fluent speaker anchor the daily routines and let the second adult join in at their level. Participation matters more than perfection.`;
+  }
+  function checkin(stage) {
+    const weeks = stage === 'future' ? 12 : 8;
+    const d = new Date(); d.setDate(d.getDate() + weeks * 7);
+    return { weeks, text: d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) };
+  }
+
+  function buildModel(a) {
     const L = esc(cap(a.langTarget));
     const C = esc(cap(a.langCommunity));
     const stage = STAGE[a.stage] || STAGE.baby;
@@ -419,21 +478,24 @@
       ? `${L} matters to us ${whys.slice(0, 2).join(', and ')}${whys.length > 2 ? ', among other reasons' : ''}.`
       : `${L} matters to us.`;
     const routines = pickRoutines(a).map((k) => ROUTINES[k](L));
-    const notes = exposureNote(a, L);
-    const speakers = [];
-    speakers.push(`You: ${{ fluent: 'fluent', some: 'conversational', learning: 'learning' }[a.me]}`);
+    const speakers = [`You: ${{ fluent: 'fluent', some: 'conversational', learning: 'learning' }[a.me]}`];
     if (a.partner && a.partner !== 'na') speakers.push(`Co-parent: ${{ fluent: 'fluent', some: 'conversational', none: `does not speak ${L}` }[a.partner]}`);
     if (a.relatives !== 'none') speakers.push(`Relatives: ${a.relatives === 'nearby' ? 'nearby' : 'far away (calls)'}`);
     if (a.caregiver === 'yes') speakers.push('Caregiver: speaks it');
     const supportLabels = { school: 'heritage/bilingual program', playgroup: 'playgroup or families', faithcomm: 'religious/cultural community', books: 'books and music', media: 'shows, podcasts, apps', travel: 'visits', none: 'nothing yet' };
-    const supports = a.support.map((s) => supportLabels[s]).filter(Boolean);
+    const supports = a.support.map((k) => supportLabels[k]).filter(Boolean);
+    return { a, L, C, stage, goal, whySentence, routines, speakers, supports, interaction: goal.input(L, a), household: householdNote(a, L), widen: pickWiden(a, L, C), date: checkin(a.stage) };
+  }
 
-    const html = `
+  function renderPlan(a) {
+    const m = buildModel(a);
+    const n = m.routines.length;
+    output.innerHTML = `
       <div class="plan-head">
         <div>
           <p class="eyebrow" style="margin-bottom:6px">Your starting plan</p>
-          <h3>${L} in our family</h3>
-          <p class="sub">A ${esc(stage.label)} plan focused on ${esc(goal.label)}. Cautious by design — it is a place to start, not a verdict.</p>
+          <h3>${m.L} in our family</h3>
+          <p class="sub">A ${esc(m.stage.label)} plan focused on ${esc(m.goal.label)}. Cautious by design: a place to start, not a verdict.</p>
         </div>
         <div class="plan-actions">
           <button type="button" class="btn btn-accent" id="btn-print">
@@ -443,67 +505,73 @@
         </div>
       </div>
 
-      <div class="plan-three">
-        <div class="mini c-gold"><b>Our beliefs</b>${whySentence}</div>
-        <div class="mini c-sage"><b>Our practices today</b>${speakers.map(esc).join(' · ')}${supports.length ? `<br><span style="color:var(--muted)">Support: ${supports.map(esc).join(', ')}</span>` : ''}</div>
-        <div class="mini c-terra"><b>Our management</b>${routines.length} protected routine${routines.length === 1 ? '' : 's'}, one check-in date, one circle-widening move.</div>
+      <div class="plan-why"><span class="lbl">Our why</span><p>${m.whySentence}</p></div>
+
+      <div class="plan-three" aria-label="Your plan in the three parts of a family language policy">
+        <div class="mini c-gold"><b>Beliefs</b>${m.a.why.map((w) => WHY_SHORT[w]).filter(Boolean).map(esc).join(' · ') || 'Why this language matters to us'}</div>
+        <div class="mini c-sage"><b>Practices today</b>${m.speakers.map(esc).join(' · ')}${m.supports.length ? `<br><span style="color:var(--muted)">Support: ${m.supports.map(esc).join(', ')}</span>` : ''}</div>
+        <div class="mini c-terra"><b>Management</b>${n} protected routine${n === 1 ? '' : 's'}, one circle-widening move, one check-in date.</div>
       </div>
 
-      <div class="plan-block">
-        <h4><span class="badge" style="background:var(--gold-deep)">1</span> One realistic goal for the next few months</h4>
-        <p style="margin:0">${stage.goal(L)}</p>
-      </div>
+      <ol class="plan-blocks">
+        <li class="plan-block">
+          <h4><span class="badge" style="background:var(--gold-deep)">1</span> One realistic goal for the next few months</h4>
+          <p>${m.stage.goal(m.L)}</p>
+        </li>
+        <li class="plan-block">
+          <h4><span class="badge" style="background:var(--sage)">2</span> ${n === 1 ? 'One protected routine' : n + ' protected routines'} to try this week</h4>
+          <ul>${m.routines.map((r) => `<li>${r}</li>`).join('')}</ul>
+        </li>
+        <li class="plan-block">
+          <h4><span class="badge" style="background:var(--terracotta)">3</span> One meaningful-interaction idea</h4>
+          <p>${m.interaction}</p>
+          <p class="good"><strong>Good to know about your setup:</strong> ${m.household}</p>
+        </li>
+        <li class="plan-block">
+          <h4><span class="badge" style="background:var(--plum)">4</span> One "widen the circle" move</h4>
+          <p>${m.widen}</p>
+        </li>
+        <li class="plan-block plan-date">
+          <h4><span class="badge" style="background:var(--gold-deep)">5</span> Our next check-in</h4>
+          <p><span class="date">${esc(m.date.text)}</span><br><span style="color:var(--muted)">About ${m.date.weeks} weeks from today.</span> ${m.stage.revisit}</p>
+        </li>
+        <li class="plan-block">
+          <h4><span class="badge" style="background:var(--sage)">6</span> This is a plan, not a test</h4>
+          <p>${m.stage.note}</p>
+          <p>Children help write the policy too. When something stops working, that is information, not failure: adjust the plan and carry on without guilt.</p>
+        </li>
+      </ol>
 
-      <div class="plan-block">
-        <h4><span class="badge" style="background:var(--sage)">2</span> Routines to try this week</h4>
-        <ul>${routines.map((r) => `<li>${r}</li>`).join('')}</ul>
-      </div>
-
-      <div class="plan-block">
-        <h4><span class="badge" style="background:var(--terracotta)">3</span> Meaningful input and interaction</h4>
-        <p>${goal.input(L, a)}</p>
-        <ul>${notes.map((n) => `<li>${n}</li>`).join('')}</ul>
-      </div>
-
-      <div class="plan-block">
-        <h4><span class="badge" style="background:var(--plum)">4</span> Something to remember</h4>
-        <p style="margin-bottom:8px">${stage.note}</p>
-        <p style="margin:0"><strong>Revisit, don't enshrine.</strong> ${stage.revisit} A plan is a draft of a family's habits, negotiated with the child as they grow — not a contract.</p>
-      </div>
-
-      <p class="plan-note">Based on the research summarized in the <a href="#sources">Sources</a> section (De Houwer, 2007, 2009, 2015; Hoff et al., 2012; Place &amp; Hoff, 2011; King et al., 2008; Byers-Heinlein, 2013; Ortega, 2013; Gass et al., 2020). This is an educational guide, not individualized advice. Nothing you entered has left this device.</p>
+      <p class="plan-note">Based on the research summarized under <a href="#sources">Research &amp; References</a> (De Houwer, 2007, 2009, 2015; Hoff et al., 2012; Place &amp; Hoff, 2011; King et al., 2008; Byers-Heinlein, 2013; Ortega, 2013; Gass et al., 2020). This is an educational guide, not individualized advice. Nothing you entered has left this device.</p>
     `;
-    output.innerHTML = html;
-
-    $('#btn-print').addEventListener('click', () => printPlan({ L, C, stage, goal, whySentence, speakers, supports, routines, notes, a }));
-    $('#btn-download').addEventListener('click', () => downloadPlan({ L, C, stage, goal, whySentence, speakers, supports, routines, notes, a }));
+    $('#btn-print').addEventListener('click', () => printPlan(m));
+    $('#btn-download').addEventListener('click', () => downloadPlan(m));
+    $('#plan-output h3').setAttribute('tabindex', '-1');
   }
 
-  const strip = (html) => html.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+  const strip = (html) => String(html).replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
-  function printPlan(p) {
+  function printPlan(m) {
     const root = $('#print-root');
     const today = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+    const n = m.routines.length;
     root.innerHTML = `
       <div class="print-sheet">
-        <h1>${p.L} in our family — a starting language plan</h1>
+        <h1>${m.L} in our family: a starting language plan</h1>
         <div class="pmeta">Created ${today} · Every Family Has a Language Plan · LING 2050 final project, Georgetown University</div>
+        <div class="pwhy"><b>Our why</b>${m.whySentence}</div>
         <div class="pgrid">
-          <div class="pbox"><b>Our beliefs (why)</b>${p.whySentence}</div>
-          <div class="pbox"><b>Our practices (who speaks what)</b>${p.speakers.map(esc).join(' · ')}${p.supports.length ? `<br>Support: ${p.supports.map(esc).join(', ')}` : ''}</div>
-          <div class="pbox"><b>Our management (what we protect)</b>${p.routines.length} routine${p.routines.length === 1 ? '' : 's'} · one check-in date · one new voice</div>
+          <div class="pbox"><b>Beliefs</b>${m.a.why.map((w) => WHY_SHORT[w]).filter(Boolean).map(esc).join(' · ')}</div>
+          <div class="pbox"><b>Practices today</b>${m.speakers.map(esc).join(' · ')}${m.supports.length ? `<br>Support: ${m.supports.map(esc).join(', ')}` : ''}</div>
+          <div class="pbox"><b>Management</b>${n} routine${n === 1 ? '' : 's'} · one new voice · one check-in</div>
         </div>
-        <h2>1. One realistic goal</h2>
-        <p>${p.stage.goal(p.L)}</p>
-        <h2>2. Routines to try this week</h2>
-        <ul>${p.routines.map((r) => `<li>${r}</li>`).join('')}</ul>
-        <h2>3. Meaningful input and interaction</h2>
-        <p>${p.goal.input(p.L, p.a)}</p>
-        <ul>${p.notes.map((n) => `<li>${n}</li>`).join('')}</ul>
-        <h2>4. Our check-in</h2>
-        <p>${p.stage.revisit}</p>
-        <p>Date of our next language check-in: <span class="lines" style="display:inline-block;width:40%"></span></p>
-        <p>What we noticed our child responds to: <span class="lines" style="display:inline-block;width:100%"></span></p>
+        <h2>1. One realistic goal</h2><p>${m.stage.goal(m.L)}</p>
+        <h2>2. ${n === 1 ? 'One protected routine' : n + ' protected routines'}</h2><ul>${m.routines.map((r) => `<li>${r}</li>`).join('')}</ul>
+        <h2>3. One meaningful-interaction idea</h2><p>${m.interaction}</p>
+        <h2>4. One "widen the circle" move</h2><p>${m.widen}</p>
+        <h2>5. Our next check-in</h2><p><span class="pdate">${esc(m.date.text)}</span> (about ${m.date.weeks} weeks from today). ${m.stage.revisit}</p>
+        <p>What we noticed our child responds to: <span class="lines" style="display:inline-block;width:70%"></span></p>
+        <h2>6. This is a plan, not a test</h2><p>${m.stage.note}</p>
         <div class="pfoot">Educational guide based on published research (De Houwer, 2007, 2009, 2015; Hoff et al., 2012; Place &amp; Hoff, 2011; King, Fogle &amp; Logan-Terry, 2008; Byers-Heinlein, 2013; Ortega, 2013; Gass, Behney &amp; Plonsky, 2020). Not individualized medical, speech-language, or developmental advice. Generated locally in your browser; nothing was stored or sent.</div>
       </div>`;
     root.setAttribute('aria-hidden', 'false');
@@ -511,38 +579,29 @@
     const cleanup = () => { document.body.classList.remove('printing-plan'); root.setAttribute('aria-hidden', 'true'); window.removeEventListener('afterprint', cleanup); };
     window.addEventListener('afterprint', cleanup);
     window.print();
-    // Safari may not fire afterprint reliably; clean up after a delay as a fallback
     setTimeout(cleanup, 1500);
   }
 
-  function downloadPlan(p) {
+  function downloadPlan(m) {
     const lines = [];
-    lines.push(`${strip(p.L)} IN OUR FAMILY — A STARTING LANGUAGE PLAN`);
+    lines.push(`${strip(m.L).toUpperCase()} IN OUR FAMILY: A STARTING LANGUAGE PLAN`);
     lines.push('Every Family Has a Language Plan · generated locally, nothing stored or sent');
     lines.push('');
-    lines.push('OUR BELIEFS (WHY): ' + strip(p.whySentence));
-    lines.push('OUR PRACTICES (WHO SPEAKS WHAT): ' + p.speakers.join(' · ') + (p.supports.length ? ` | Support: ${p.supports.join(', ')}` : ''));
+    lines.push('OUR WHY: ' + strip(m.whySentence));
+    lines.push('PRACTICES TODAY: ' + m.speakers.join(' · ') + (m.supports.length ? ` | Support: ${m.supports.join(', ')}` : ''));
     lines.push('');
-    lines.push('1. ONE REALISTIC GOAL');
-    lines.push('   ' + strip(p.stage.goal(p.L)));
-    lines.push('');
-    lines.push('2. ROUTINES TO TRY THIS WEEK');
-    p.routines.forEach((r) => lines.push('   - ' + strip(r)));
-    lines.push('');
-    lines.push('3. MEANINGFUL INPUT AND INTERACTION');
-    lines.push('   ' + strip(p.goal.input(p.L, p.a)));
-    p.notes.forEach((n) => lines.push('   - ' + strip(n)));
-    lines.push('');
-    lines.push('4. REVISIT, DON\'T ENSHRINE');
-    lines.push('   ' + strip(p.stage.revisit));
-    lines.push('   Next check-in date: __________    What our child responds to: __________');
-    lines.push('');
+    lines.push('1. ONE REALISTIC GOAL'); lines.push('   ' + strip(m.stage.goal(m.L))); lines.push('');
+    lines.push('2. PROTECTED ROUTINES TO TRY THIS WEEK'); m.routines.forEach((r) => lines.push('   - ' + strip(r))); lines.push('');
+    lines.push('3. ONE MEANINGFUL-INTERACTION IDEA'); lines.push('   ' + strip(m.interaction)); lines.push('   Good to know: ' + strip(m.household)); lines.push('');
+    lines.push('4. ONE "WIDEN THE CIRCLE" MOVE'); lines.push('   ' + strip(m.widen)); lines.push('');
+    lines.push('5. OUR NEXT CHECK-IN'); lines.push(`   ${m.date.text} (about ${m.date.weeks} weeks from today). ` + strip(m.stage.revisit)); lines.push('   What our child responds to: __________'); lines.push('');
+    lines.push('6. THIS IS A PLAN, NOT A TEST'); lines.push('   ' + strip(m.stage.note)); lines.push('');
     lines.push('Sources: De Houwer (2007, 2009, 2015); Hoff et al. (2012); Place & Hoff (2011); King, Fogle & Logan-Terry (2008); Byers-Heinlein (2013); Ortega (2013); Gass, Behney & Plonsky (2020). Educational guide, not individualized advice.');
     const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const aEl = document.createElement('a');
     aEl.href = url;
-    aEl.download = `${strip(p.L).toLowerCase().replace(/[^a-z0-9]+/gi, '-')}-family-language-plan.txt`;
+    aEl.download = `${strip(m.L).toLowerCase().replace(/[^a-z0-9]+/gi, '-')}-family-language-plan.txt`;
     document.body.appendChild(aEl);
     aEl.click();
     aEl.remove();

@@ -98,6 +98,22 @@ Scenarios are invented composites. Citations inside them point to the general fi
 ### Plan Builder text
 The generated plan paraphrases the same findings (exposure → skill: Hoff 2012; fluent speakers and number of speakers: Place & Hoff 2011; both-parents-minority-language pattern and OPOL: De Houwer 2007; dilingual pattern: De Houwer 2009; impact belief: De Houwer 2009; older learners learn well: Gass 2020 pp. 112–113). Advice sentences (e.g. "recast once and carry on," "pick one routine") are practical recommendations derived from these findings, not claims attributed to a specific study.
 
+### Fast path ("The 3-minute version") and "What do I say in the moment?" card (added 2026-11-09)
+Both reuse sources already verified above; no new sources were introduced.
+
+| Claim | Source | Support |
+| --- | --- | --- |
+| FLP = beliefs + actual practices + deliberate management | King 2008 (abstract); Spolsky 2012 | Same as "What is FLP?" |
+| Children build language from real back-and-forth, not drills or screens | Gass 2020, pp. 105–106; Montee 2026, slide 16 | Active construction; edutainment is a supplement, not a substitute |
+| How much of a language a child hears tracks how far they get in it | Hoff 2012 (abstract) | Relative input predicts vocabulary and grammar in that language |
+| Plans are negotiated with the child and change as life does | King 2008 (abstract) | "managed, learned, and negotiated within families" |
+| Don't turn a child's English answer into a test; family well-being matters | De Houwer 2015 (abstract) | Harmonious bilingual development framed as well-being |
+| Respond in the target language, repeating the child's point; asking "What?" is the firmer strategy | De Houwer 2009, p. 9 | Monolingual discourse strategies in the Manuel case study: asking "What?" and translating the child's word |
+| If the two-language pattern becomes habitual, speaking skill in the heritage language can fade while understanding stays | De Houwer 2009, p. 64 | Variation box bullet on dilingual conversations becoming a habit |
+
+### Wording note
+Parent-facing text now says "heritage language" or "the language less widely used in your community" where the sources say "minority language"; the sources' own term is kept inside study descriptions and reference notes. "Dilingual conversation," "monolingual discourse strategies," and "recast" are glossed in plain English where they appear.
+
 ## Deliberately avoided
 - Specific percentages from De Houwer (2007) — full text not accessed.
 - Claims about cognitive or academic advantages as a reason to raise a child bilingually.

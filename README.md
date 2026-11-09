@@ -3,7 +3,9 @@
 *A research-backed guide to raising children with more than one language.*
 Final project for **LING 2050: How Languages Are Learned** (Georgetown University, Fall 2026, Prof. Meg Montee).
 
-The site teaches non-expert parents and future parents what **Family Language Policy (FLP)** is — beliefs, practices, and management — why intentional planning matters, which common myths the research complicates, and how to build a realistic, revisable language plan at home. It ends with an interactive **Language Plan Builder** that produces a printable one-page worksheet entirely in the browser.
+The site teaches non-expert parents and future parents what **Family Language Policy (FLP)** is — beliefs, practices, and management — why intentional planning matters, which common myths the research complicates, and how to build a realistic, revisable language plan at home. A **3-minute version** under the hero gives busy parents the shortcut; a **"What do I say in the moment?"** card turns the research into a script; and the interactive **Language Plan Builder** produces a printable one-page worksheet entirely in the browser.
+
+Live site: <https://joshlammbo0.github.io/Every-Family-Has-a-Language-Plan/>
 
 ## Run it locally
 
@@ -30,6 +32,7 @@ Locally, the folder is also registered in the Claude desktop app as the `family-
 | `serve.js` | Optional zero-dependency local static server (`node serve.js`) |
 | `assets/favicon.svg` | Three-strand mark used in the tab icon and header |
 | `research-notes.md` | Claim-to-source map: every substantive claim on the site and the exact source behind it |
+| `REFLECTION-OUTLINE.md` | Outline for the separate reflection paper |
 
 ## Privacy
 
@@ -41,11 +44,11 @@ Semantic landmarks and heading order, a skip link, visible focus states, `aria-e
 
 ## 3-minute presentation route
 
-1. **Hero (20 s).** Read the headline question aloud: *"Your family may already have a language policy. Is it the one you want?"* Point out the three woven strands — beliefs, practices, management — that structure the whole site.
-2. **What is FLP? (40 s).** Click **Practices**. Show the Okafor–Lindqvist example: stated plan versus what actually happens between 6 and 8 p.m. Click a source marker (e.g. *Hoff et al., 2012*) to show the tooltip and the jump to the reference.
-3. **Myths (40 s).** Open myth 2, *"OPOL is the only approach that works,"* and read the De Houwer (2007) finding: neither necessary nor sufficient. Mention that every reality is nuanced and sourced.
-4. **Plan Builder (60 s).** Fill it in live — e.g. Russian / English, "talking with grandparents," you fluent, partner does not speak it, relatives far away, toddler, "nothing yet," routines: bath + calls + books, goal: conversation. Show the generated plan, then click **Print or save as PDF** to show the one-page worksheet.
-5. **Sources and close (20 s).** Scroll to Sources: two course readings plus the lecture, five independently found peer-reviewed articles, "how we used it" notes, and the disclaimer. Close on the thesis banner: *not one perfect rule, but an intentional, flexible plan.*
+1. **Hero (20 s).** Read the headline question aloud. Click the **Practices** label on the woven illustration: it jumps down and opens the matching card, showing that the three strands structure the whole site.
+2. **The 3-minute version (30 s).** Scroll back up to the strip under the hero. One sentence on what FLP is, three things that matter most, and the plan builder. Point out a source chip and hover it to show the tooltip.
+3. **Myths and the script card (40 s).** Open myth 2 (*OPOL is the only approach*) and read the De Houwer (2007) line: neither necessary nor sufficient. Then scroll to **"What do I say in the moment?"** and read the juice exchange aloud.
+4. **Plan Builder (60 s).** Fill it in live: Russian / English, "talking with grandparents," you fluent, partner does not speak it, relatives far away, baby, "nothing yet," routines bath + calls, goal conversation. Show "Our why," the six numbered blocks, the suggested check-in date, then click **Print or save as PDF** for the one-page worksheet. Mention that nothing leaves the browser.
+5. **Research & References (20 s).** Show the three counts (5 course sources, 5 core articles, 3 supporting works) and open one "How we used it." Close on the thesis banner: *not one perfect rule, but an intentional, flexible plan.*
 
 ## Research base
 
