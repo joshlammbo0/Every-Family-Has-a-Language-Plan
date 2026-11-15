@@ -769,3 +769,6 @@ input[aria-invalid="true"] { border-color: #c3583a; }
   .print-sheet .lines { display: inline-block; width: 60%; border-bottom: 1px solid #777; height: 14pt; vertical-align: bottom; }
   .print-sheet .pfoot { font-size: 8pt; }
 }
+
+/* Deep-link targets inside sections clear the sticky header too */
+details.myth, .flp-detail, .script-card, .fast-path, .scenario, .week-item { scroll-margin-top: calc(var(--header-h) + 12px); }
