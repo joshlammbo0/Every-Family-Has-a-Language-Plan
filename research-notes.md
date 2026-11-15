@@ -114,6 +114,26 @@ Both reuse sources already verified above; no new sources were introduced.
 ### Wording note
 Parent-facing text now says "heritage language" or "the language less widely used in your community" where the sources say "minority language"; the sources' own term is kept inside study descriptions and reference notes. "Dilingual conversation," "monolingual discourse strategies," and "recast" are glossed in plain English where they appear.
 
+### Plan Builder copy after the November 15 audit pass
+The builder now writes routines around the people who can actually carry them, offers a separate set of starting points for families planning ahead, and names a "next person to involve." The research basis is unchanged:
+
+| Generated claim | Source |
+| --- | --- |
+| Audio on its own teaches young children very little; audio with a person teaches more | Montee 2026, slide 16 (in-person exposure needed; edutainment is a supplement) |
+| How much of a language a child hears predicts how many words they know in it (baby-stage note) | Hoff 2012 (abstract) |
+| A different speaker adds something that extra hours from the same speaker do not | Place & Hoff 2011 (abstract: number of speakers as a unique predictor) |
+| Both-parents-use-the-heritage-language homes had the best odds in a study of nearly 1,900 families | De Houwer 2007 (abstract) |
+| Parents who believe their own choices matter tend to act on them | De Houwer 1999 (impact belief), as cited on the site |
+| Preschoolers answering in the community language is a normal two-language pattern | De Houwer 2009, pp. 8–9 |
+
+Sentences that are practical advice rather than research claims (for example "roles are easier to agree on before the baby arrives," "watch what the children speak to each other") are written as advice and carry no citation. Two earlier drafts that sounded like findings ("people say yes more often when asked before the baby" and "siblings are a large share of the language a younger child hears") were removed because no source on the site supports them.
+
+### Copy and structure changes in the same pass
+- Myths are now question titles with a visible one-sentence answer; the longer evidence, caveats, and citations are unchanged underneath, and the original "what parents are often told" wording is kept inside each panel.
+- "Why it matters" merged the two relationship cards; both citations (Montee 2026 slide 26; De Houwer 2015) remain.
+- "Our course highlighted" now reads "highlighted in the course this project grew out of"; "harmonious bilingual development" is glossed on first use.
+- Fonts are self-hosted (SIL Open Font License copies of Fraunces and Inter), so the page makes no third-party requests.
+
 ## Deliberately avoided
 - Specific percentages from De Houwer (2007) — full text not accessed.
 - Claims about cognitive or academic advantages as a reason to raise a child bilingually.
