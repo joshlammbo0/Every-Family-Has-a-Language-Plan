@@ -10,7 +10,7 @@ The syllabus asks the reflection to cover four things: why you chose the medium,
 ## 2. Why a website (¾–1 page)
 - The audience is busy parents who search the web at 10 p.m.; a website meets them where they already look, unlike a podcast or poster.
 - Interactivity makes the concept personal: the Language Plan Builder turns an abstract framework into *their* beliefs, practices, and management — and ends with a printable artifact they can stick on a fridge.
-- Design decisions as teaching decisions: three colored strands as a visual mnemonic for the three components; myth-versus-reality format because the course's own Sept. 1 lecture framed SLA through misconceptions; a Sources section with "how we used it" notes to model the research–practice interface from Module 5.
+- Design decisions as teaching decisions: three colored strands as a visual mnemonic for the three components; myth-versus-reality format because the course's own Sept. 1 lecture framed SLA through misconceptions; a Sources section with "how I used it" notes to model the research–practice interface from Module 5.
 - Accessibility (keyboard, contrast, mobile) and privacy (nothing stored or sent) as part of treating parents as a real audience, not a pretend one.
 
 ## 3. How SLA research was integrated (1½–2 pages)
