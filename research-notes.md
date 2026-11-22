@@ -134,6 +134,9 @@ Sentences that are practical advice rather than research claims (for example "ro
 - "Our course highlighted" now reads "highlighted in the course this project grew out of"; "harmonious bilingual development" is glossed on first use.
 - Fonts are self-hosted (SIL Open Font License copies of Fraunces and Inter), so the page makes no third-party requests.
 
+### Introduction video (added 2026-11-22)
+The 89-second author introduction under the hero describes the site and what a visitor leaves with (a reason, a routine, a person, a check-in date). It makes no research claims beyond "this site uses research on family language policy," so it carries no citations. Captions (`assets/intro.vtt`) and the on-page transcript were generated from the audio and checked against it word for word. The original recording was trimmed at both ends and seven pauses of 0.6–0.9 s were shortened; no words were removed.
+
 ## Deliberately avoided
 - Specific percentages from De Houwer (2007) — full text not accessed.
 - Claims about cognitive or academic advantages as a reason to raise a child bilingually.

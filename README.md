@@ -33,12 +33,13 @@ Locally, the folder is also registered in the Claude desktop app as the `family-
 | `assets/favicon.svg` | Three-strand mark used in the tab icon and header |
 | `assets/fonts/` | Self-hosted Fraunces and Inter (SIL Open Font License) |
 | `assets/share.png` | Link-preview image |
+| `assets/intro.mp4`, `intro.vtt`, `intro-poster.jpg` | The 89-second author introduction (H.264/AAC), its captions, and its poster frame |
 | `research-notes.md` | Claim-to-source map: every substantive claim on the site and the exact source behind it |
 | `REFLECTION-OUTLINE.md` | Outline for the separate reflection paper |
 
 ## Privacy
 
-The Plan Builder keeps answers in memory only. There are no cookies, no localStorage, no analytics, and no network requests at all. Closing the tab erases everything, which the page says plainly next to the form.
+The introduction video is self-hosted (no third-party player). The Plan Builder keeps answers in memory only. There are no cookies, no localStorage, no analytics, and no network requests at all. Closing the tab erases everything, which the page says plainly next to the form.
 
 ## Accessibility
 
@@ -46,7 +47,7 @@ Semantic landmarks and heading order, a skip link, visible focus states, native 
 
 ## 3-minute presentation route
 
-1. **First screen (20 s).** Read the headline and the one-line promise: one reason, one routine, one person. Point out the three strands in the illustration; click **what you do** to show it opens the matching card.
+1. **First screen (20 s).** Read the headline and the one-line promise: one reason, one routine, one person. Mention the captioned 90-second introduction just below (no need to play it in class). Point out the three strands in the illustration; click **what you do** to show it opens the matching card.
 2. **The quick guide (30 s).** Three points, each with a source chip. Hover a chip for the tooltip; click one to jump to the reference and use the "back to where you were reading" link to return.
 3. **Myths and the script (40 s).** Show the question-and-short-answer format, open *Is "one parent, one language" the only way?*, then scroll to **What do I say in the moment?** and read the juice exchange aloud.
 4. **Plan Builder (60 s).** Russian / English; talking with relatives; you fluent, co-parent does not speak it, relatives far away; baby; nothing yet; routines bath + cooking; goal conversation. Show the four-tile summary (reason, first routine, next person, check-in date), open **The full plan**, then **Print / save PDF**. Say that nothing leaves the browser.

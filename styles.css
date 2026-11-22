@@ -772,3 +772,34 @@ input[aria-invalid="true"] { border-color: #c3583a; }
 
 /* Deep-link targets inside sections clear the sticky header too */
 details.myth, .flp-detail, .script-card, .fast-path, .scenario, .week-item { scroll-margin-top: calc(var(--header-h) + 12px); }
+
+/* Introduction video (self-hosted, captioned) */
+.intro-video {
+  margin-top: clamp(36px, 5vw, 64px); display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(20px, 3.5vw, 40px); align-items: start;
+  scroll-margin-top: calc(var(--header-h) + 12px);
+}
+.intro-media { position: relative; }
+.intro-media::before {
+  content: ""; position: absolute; inset: auto -10px -10px auto; width: 60%; height: 60%; border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--gold) 0 33%, var(--sage) 33% 66%, var(--terracotta) 66%); opacity: 0.55; z-index: 0;
+}
+.intro-media video {
+  position: relative; z-index: 1; display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; background: #1b1626;
+  border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.intro-media video:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.intro-text h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin-bottom: 10px; }
+.intro-text p { color: var(--ink-2); max-width: 60ch; }
+.intro-text .eyebrow { color: var(--terracotta-text); }
+.transcript > summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.92rem; color: var(--plum); padding: 8px 14px; min-height: 40px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper); }
+.transcript > summary::-webkit-details-marker { display: none; }
+.transcript > summary::before { content: "+"; font-weight: 800; }
+.transcript[open] > summary::before { content: "–"; }
+.transcript > summary:hover { border-color: var(--plum); }
+.transcript p { margin: 12px 0 0; font-size: 0.95rem; }
+.btn-watch svg { width: 16px; height: 16px; }
+@media (max-width: 860px) {
+  .intro-video { grid-template-columns: 1fr; }
+  .intro-media { max-width: 520px; }
+}
+@media print { .intro-video { display: none; } }
