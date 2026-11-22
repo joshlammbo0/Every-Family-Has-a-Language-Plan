@@ -137,6 +137,9 @@ Sentences that are practical advice rather than research claims (for example "ro
 ### Introduction video (added 2026-11-22)
 The 89-second author introduction under the hero describes the site and what a visitor leaves with (a reason, a routine, a person, a check-in date). It makes no research claims beyond "this site uses research on family language policy," so it carries no citations. Captions (`assets/intro.vtt`) and the on-page transcript were generated from the audio and checked against it word for word. The original recording was trimmed at both ends and seven pauses of 0.6–0.9 s were shortened; no words were removed.
 
+### Builder walkthrough video (added 2026-11-22)
+"How to use this builder" (63 s) sits above the plan builder as an optional, click-to-play video. It describes what the builder asks and what the plan contains; it makes no research claims and carries no citations. Captions and transcript were generated from the audio. Head, tail, and nine pauses were cut from the 71-second recording; no words were removed.
+
 ## Deliberately avoided
 - Specific percentages from De Houwer (2007) — full text not accessed.
 - Claims about cognitive or academic advantages as a reason to raise a child bilingually.

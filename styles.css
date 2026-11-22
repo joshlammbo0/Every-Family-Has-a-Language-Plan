@@ -803,3 +803,47 @@ details.myth, .flp-detail, .script-card, .fast-path, .scenario, .week-item { scr
   .intro-media { max-width: 520px; }
 }
 @media print { .intro-video { display: none; } }
+
+/* Video cards: poster + centered play button (controls appear once playing) */
+.video-card { position: relative; }
+.video-card video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; background: #1b1626; border-radius: var(--radius); border: 1px solid var(--line); }
+.video-play {
+  position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; border: 0; padding: 0; cursor: pointer;
+  border-radius: var(--radius); background: linear-gradient(180deg, rgba(27, 22, 38, 0) 45%, rgba(27, 22, 38, 0.35));
+}
+.video-play[hidden] { display: none; }
+.video-play-icon {
+  width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: #fff; color: var(--plum);
+  box-shadow: 0 8px 24px rgba(27, 22, 38, 0.35); transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+.video-play-icon svg { width: 28px; height: 28px; margin-left: 3px; }
+.video-play:hover .video-play-icon, .video-play:focus-visible .video-play-icon { background: var(--plum); color: #fff; transform: scale(1.06); }
+.video-play:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+/* Optional walkthrough above the builder: compact until played */
+.howto {
+  display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 20px; align-items: center;
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm);
+  padding: 16px 20px 16px 16px; margin-bottom: 24px; scroll-margin-top: calc(var(--header-h) + 12px);
+}
+.howto .video-card video { border-radius: 12px; }
+.howto .video-play { border-radius: 12px; place-items: end start; padding: 10px; }
+.howto .video-play-icon { width: 48px; height: 48px; }
+.howto .video-play-icon svg { width: 22px; height: 22px; }
+.howto-meta { margin: 0 0 4px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.howto h3 { font-size: 1.25rem; margin: 0 0 6px; }
+.howto-text > p:not(.howto-meta) { margin: 0 0 10px; color: var(--ink-2); font-size: 0.98rem; max-width: 62ch; }
+.howto .transcript > summary { min-height: 36px; padding: 6px 12px; font-size: 0.88rem; }
+.howto.is-playing { grid-template-columns: minmax(0, 520px) minmax(0, 1fr); align-items: start; }
+@media (max-width: 860px) {
+  .howto.is-playing { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .howto { grid-template-columns: 124px minmax(0, 1fr); gap: 14px; padding: 12px 14px 12px 12px; align-items: start; }
+  .howto h3 { font-size: 1.1rem; }
+  .howto:not(.is-playing) .howto-text > p:not(.howto-meta) { display: none; }
+  .howto .video-play { padding: 6px; }
+  .howto .video-play-icon { width: 40px; height: 40px; }
+  .howto .video-play-icon svg { width: 18px; height: 18px; }
+}
+@media print { .howto { display: none; } }

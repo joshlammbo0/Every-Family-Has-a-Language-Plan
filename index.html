@@ -87,12 +87,13 @@
 
   <div class="wrap">
     <div class="intro-video" id="intro" aria-labelledby="intro-title">
-      <div class="intro-media">
+      <div class="video-card intro-media" data-video-card>
         <video controls playsinline preload="metadata" width="640" height="480" poster="assets/intro-poster.jpg" aria-label="A 90-second introduction to this guide, from its author">
           <source src="assets/intro.mp4" type="video/mp4">
           <track kind="captions" src="assets/intro.vtt" srclang="en" label="English" default>
           <p>Your browser cannot play this video. <a href="assets/intro.mp4">Download the introduction (MP4, 3.7 MB)</a> or read the transcript.</p>
         </video>
+        <button type="button" class="video-play" hidden aria-label="Play the introduction, 1 minute 29 seconds"><span class="video-play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span></button>
       </div>
       <div class="intro-text">
         <p class="eyebrow">Watch · 1 min 29 s · captioned</p>
@@ -404,6 +405,29 @@
     <div class="section-head">
       <h2 id="build-title">Build your family's starting plan</h2>
       <p class="lede">Six questions, about three minutes. You get a one-page plan with a first routine, a person to involve, and a check-in date, built from the research on this site. Your answers stay in this tab; print or save your plan before closing it.</p>
+    </div>
+
+    <div class="howto" id="howto" aria-labelledby="howto-title">
+      <div class="video-card howto-media" data-video-card>
+        <video controls playsinline preload="none" width="640" height="480" poster="assets/howto-poster.jpg" aria-label="How to use this builder: a one-minute walkthrough">
+          <source src="assets/howto.mp4" type="video/mp4">
+          <track kind="captions" src="assets/howto.vtt" srclang="en" label="English" default>
+          <p>Your browser cannot play this video. <a href="assets/howto.mp4">Download the walkthrough (MP4, 2.8 MB)</a> or read the transcript.</p>
+        </video>
+        <button type="button" class="video-play" hidden aria-label="Play the walkthrough: How to use this builder, about one minute"><span class="video-play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span></button>
+      </div>
+      <div class="howto-text">
+        <p class="howto-meta">Optional · 1 min walkthrough · captioned</p>
+        <h3 id="howto-title">How to use this builder</h3>
+        <p>What the six questions ask, and what your plan will contain. Skip it if you would rather start answering below.</p>
+        <details class="transcript">
+          <summary>Read the transcript</summary>
+          <p>So this part of the site is a quick tool for turning what matters to your family into a realistic language plan. And one thing to keep in mind before you start using this tool: this builder isn't about finding a perfect language strategy. So please don't be stressed out by this.</p>
+          <p>So this builder is going to ask you six questions about what your family can realistically do right now. Which language do you want to grow or protect? Who speaks this language? What support does your family already have? And where this plan could fit naturally into your week.</p>
+          <p>At the end, you'll have a starting plan: one reason that this language matters to your family, one routine or a couple of routines to try, one person that you can involve, and a date to check back in.</p>
+          <p>So you can print this plan or save it. You could try it for a few weeks and adjust it as your family changes. This is just a starting plan. It's supposed to be dynamic. So take all the stress off.</p>
+        </details>
+      </div>
     </div>
 
     <div class="builder-shell">

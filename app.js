@@ -289,6 +289,36 @@
   window.addEventListener('scroll', hideTip, { passive: true });
 
   /* ------------------------------------------------------------------ */
+  /* Video cards: a clean thumbnail with a play button. Nothing autoplays; */
+  /* without JavaScript the native controls are simply shown.             */
+  /* ------------------------------------------------------------------ */
+  $$('[data-video-card]').forEach((card) => {
+    const video = $('video', card);
+    const btn = $('.video-play', card);
+    if (!video || !btn) return;
+    video.controls = false;
+    btn.hidden = false;
+    const markPlaying = () => {
+      video.controls = true;
+      card.classList.add('playing');
+      const wrap = card.closest('.howto');
+      if (wrap) wrap.classList.add('is-playing');
+      btn.hidden = true;
+    };
+    btn.addEventListener('click', () => {
+      markPlaying();
+      const started = video.play();
+      if (started && started.catch) started.catch(function () {});
+      video.focus({ preventScroll: true });
+    });
+    video.addEventListener('play', markPlaying);
+    video.addEventListener('ended', () => {
+      btn.hidden = false;
+      btn.setAttribute('aria-label', 'Play again');
+    });
+  });
+
+  /* ------------------------------------------------------------------ */
   /* Toast                                                               */
   /* ------------------------------------------------------------------ */
   const toastEl = $('#toast');

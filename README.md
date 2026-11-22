@@ -34,6 +34,7 @@ Locally, the folder is also registered in the Claude desktop app as the `family-
 | `assets/fonts/` | Self-hosted Fraunces and Inter (SIL Open Font License) |
 | `assets/share.png` | Link-preview image |
 | `assets/intro.mp4`, `intro.vtt`, `intro-poster.jpg` | The 89-second author introduction (H.264/AAC), its captions, and its poster frame |
+| `assets/howto.mp4`, `howto.vtt`, `howto-poster.jpg` | The 63-second "How to use this builder" walkthrough, its captions, and its poster frame |
 | `research-notes.md` | Claim-to-source map: every substantive claim on the site and the exact source behind it |
 | `REFLECTION-OUTLINE.md` | Outline for the separate reflection paper |
 
