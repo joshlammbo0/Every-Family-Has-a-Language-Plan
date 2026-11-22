@@ -140,6 +140,9 @@ The 89-second author introduction under the hero describes the site and what a v
 ### Builder walkthrough video (added 2026-11-22)
 "How to use this builder" (63 s) sits above the plan builder as an optional, click-to-play video. It describes what the builder asks and what the plan contains; it makes no research claims and carries no citations. Captions and transcript were generated from the audio. Head, tail, and nine pauses were cut from the 71-second recording; no words were removed.
 
+### "What to do when your child answers in English" video (added 2026-11-22)
+A 67-second click-to-play video under the heading of the "What do I say in the moment?" section. It restates the three moves already written and cited beside it (understanding counts; answer in the language and repeat what the child said; keep the conversation going and keep it playful), with a Russian example. It adds no new research claims, so the citations stay on the written guidance next to it (De Houwer 2009, pp. 9 and 64; De Houwer 2015; Gass 2020, pp. 105-106). Head, tail, and eight pauses were cut from the 78-second recording; no words were removed. The English captions were generated from the audio; the two Russian lines were captioned by hand and should be confirmed by the author.
+
 ## Deliberately avoided
 - Specific percentages from De Houwer (2007) — full text not accessed.
 - Claims about cognitive or academic advantages as a reason to raise a child bilingually.

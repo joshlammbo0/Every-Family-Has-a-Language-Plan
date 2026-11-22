@@ -35,6 +35,7 @@ Locally, the folder is also registered in the Claude desktop app as the `family-
 | `assets/share.png` | Link-preview image |
 | `assets/intro.mp4`, `intro.vtt`, `intro-poster.jpg` | The 89-second author introduction (H.264/AAC), its captions, and its poster frame |
 | `assets/howto.mp4`, `howto.vtt`, `howto-poster.jpg` | The 63-second "How to use this builder" walkthrough, its captions, and its poster frame |
+| `assets/inmoment.mp4`, `inmoment.vtt`, `inmoment-poster.jpg` | The 67-second "What to do when your child answers in English" video, its captions, and its poster frame |
 | `research-notes.md` | Claim-to-source map: every substantive claim on the site and the exact source behind it |
 | `REFLECTION-OUTLINE.md` | Outline for the separate reflection paper |
 

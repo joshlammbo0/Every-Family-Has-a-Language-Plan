@@ -847,3 +847,8 @@ details.myth, .flp-detail, .script-card, .fast-path, .scenario, .week-item { scr
   .howto .video-play-icon svg { width: 18px; height: 18px; }
 }
 @media print { .howto { display: none; } }
+
+/* Compact video card inside another card (the script section) */
+.howto h4 { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.01em; font-size: 1.2rem; line-height: 1.2; color: var(--plum-deep); margin: 0 0 6px; }
+.script-card .howto { background: var(--cream); box-shadow: none; margin: 0 0 22px; }
+@media (max-width: 600px) { .howto h4 { font-size: 1.05rem; } }
