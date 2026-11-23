@@ -50,7 +50,6 @@ Legend — **C** = course reading or lecture · **O** = independently found peer
 | The minority language is the one at risk (all children spoke the majority language; minority use not universal) | De Houwer 2007 | Abstract |
 | Heritage context is a distinct SLA learning context | Ortega 2013, p. 6 | "three… key contextual distinctions: foreign, second and heritage" |
 | "Harmonious bilingual development" = well-being in a language-contact situation involving young children and families | De Houwer 2015 | Abstract |
-| Cognitive advantages are reported "in some ways" but the site does not rely on them | Montee 2026, slide 17 | Slide "Bilinguals have cognitive benefits over monolinguals — In some ways…". The site's statement that the evidence is debated is editorial caution, not attributed to a source. |
 
 ### Myths
 | Claim | Source | Support |
@@ -142,6 +141,9 @@ The 89-second author introduction under the hero describes the site and what a v
 
 ### "What to do when your child answers in English" video (added 2026-11-22)
 A 67-second click-to-play video under the heading of the "What do I say in the moment?" section. It restates the three moves already written and cited beside it (understanding counts; answer in the language and repeat what the child said; keep the conversation going and keep it playful), with a Russian example. It adds no new research claims, so the citations stay on the written guidance next to it (De Houwer 2009, pp. 9 and 64; De Houwer 2015; Gass 2020, pp. 105-106). Head, tail, and eight pauses were cut from the 78-second recording; no words were removed. The English captions were generated from the audio; the two Russian lines were captioned by hand and should be confirmed by the author.
+
+### Removed on 2026-11-23
+The "What this guide deliberately does not promise" box (cognitive advantages, Montee 2026 slide 17) and the standalone "Educational guide, not individual advice" box were removed at the author's request. The site makes no claim about cognitive advantages anywhere.
 
 ## Deliberately avoided
 - Specific percentages from De Houwer (2007) — full text not accessed.
