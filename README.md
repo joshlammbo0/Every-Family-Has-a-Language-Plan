@@ -53,7 +53,7 @@ Semantic landmarks and heading order, a skip link, visible focus states, native 
 2. **The quick guide (30 s).** Three points, each with a source chip. Hover a chip for the tooltip; click one to jump to the reference and use the "back to where you were reading" link to return.
 3. **Myths and the script (40 s).** Show the question-and-short-answer format, open *Is "one parent, one language" the only way?*, then scroll to **What do I say in the moment?** and read the juice exchange aloud.
 4. **Plan Builder (60 s).** Russian / English; talking with relatives; you fluent, co-parent does not speak it, relatives far away; baby; nothing yet; routines bath + cooking; goal conversation. Show the four-tile summary (reason, first routine, next person, check-in date), open **The full plan**, then **Print / save PDF**. Say that nothing leaves the browser.
-5. **Research & References (20 s).** The three counts, one "How I used it" disclosure, and the closing line: *not one perfect rule, but a plan you revisit.*
+5. **Research & References (20 s).** The three counts, one "How I used it" disclosure.
 
 ## Research base
 
