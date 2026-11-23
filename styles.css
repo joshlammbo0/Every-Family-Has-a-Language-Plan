@@ -868,3 +868,19 @@ details.myth, .flp-detail, .script-card, .fast-path, .scenario, .week-item { scr
   .start-list > li { padding: 16px 16px 16px 56px; }
   .start-list > li::before { left: 14px; top: 16px; }
 }
+
+/* Hero illustration: static and decorative, with plain annotations (not controls) */
+.weave { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: stretch; aspect-ratio: auto; max-width: 540px; }
+.weave svg { width: 100%; height: auto; aspect-ratio: 380 / 316; }
+.weave-notes { position: relative; min-width: 8.2em; }
+.weave-note {
+  position: absolute; right: 0; transform: translateY(-50%); white-space: nowrap; text-align: right;
+  font-size: 0.92rem; font-weight: 600; color: var(--ink-2); line-height: 1.2;
+}
+.weave-note i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; vertical-align: 0; }
+.weave-note.n1 { top: 18.4%; }
+.weave-note.n2 { top: 46.8%; }
+.weave-note.n3 { top: 75.3%; }
+.hero-strands { color: var(--ink-2); }
+@media (max-width: 860px) { .weave { max-width: 440px; } }
+@media (max-width: 640px) { .weave { display: none; } }
