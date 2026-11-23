@@ -884,3 +884,10 @@ details.myth, .flp-detail, .script-card, .fast-path, .scenario, .week-item { scr
 .hero-strands { color: var(--ink-2); }
 @media (max-width: 860px) { .weave { max-width: 440px; } }
 @media (max-width: 640px) { .weave { display: none; } }
+
+/* Hero: a single text column (no illustration) */
+.hero .hero-grid { display: block; }
+.hero .hero-grid > div { max-width: 800px; }
+.hero h1 { max-width: 16em; }
+.hero .lede { max-width: 40em; }
+.hero .intro-video { margin-top: clamp(28px, 3.5vw, 40px); }
