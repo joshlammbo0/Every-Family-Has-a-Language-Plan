@@ -145,6 +145,9 @@ A 67-second click-to-play video under the heading of the "What do I say in the m
 ### Removed on 2026-11-23
 The "What this guide deliberately does not promise" box (cognitive advantages, Montee 2026 slide 17) and the standalone "Educational guide, not individual advice" box were removed at the author's request. The site makes no claim about cognitive advantages anywhere.
 
+### "Start this week" rewritten as four static suggestions (2026-11-23)
+The six-item checklist became four plain suggestions. Two carry citations because they rest on a finding: "Bring in another person" (Place & Hoff 2011: number of speakers) and "Follow what your child enjoys... a real conversation, not a lesson" (Gass 2020, pp. 105-106: children build language actively, not by drill). "Pick one routine" and "Check in after a few weeks" are advice with no factual claim, so they carry none. The earlier table for this section describes the old six-item version.
+
 ## Deliberately avoided
 - Specific percentages from De Houwer (2007) — full text not accessed.
 - Claims about cognitive or academic advantages as a reason to raise a child bilingually.

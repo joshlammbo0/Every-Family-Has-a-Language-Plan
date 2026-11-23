@@ -852,3 +852,19 @@ details.myth, .flp-detail, .script-card, .fast-path, .scenario, .week-item { scr
 .howto h4 { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.01em; font-size: 1.2rem; line-height: 1.2; color: var(--plum-deep); margin: 0 0 6px; }
 .script-card .howto { background: var(--cream); box-shadow: none; margin: 0 0 22px; }
 @media (max-width: 600px) { .howto h4 { font-size: 1.05rem; } }
+
+/* Start this week: four static suggestions (not controls) */
+.start-sub { font-size: 1.25rem; margin: 0 0 14px; }
+.start-list { list-style: none; margin: 0; padding: 0; counter-reset: start; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.start-list > li { counter-increment: start; position: relative; margin: 0; padding: 18px 22px 18px 68px; }
+.start-list > li + li { border-top: 1px solid var(--line); }
+.start-list > li::before {
+  content: counter(start); position: absolute; left: 22px; top: 18px; width: 30px; height: 30px; border-radius: 50%;
+  display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--plum); background: var(--sand);
+}
+.start-list h4 { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.01em; font-size: 1.15rem; line-height: 1.25; color: var(--plum-deep); margin: 2px 0 4px; }
+.start-list p { margin: 0; color: var(--ink-2); font-size: 0.98rem; max-width: 68ch; }
+@media (max-width: 480px) {
+  .start-list > li { padding: 16px 16px 16px 56px; }
+  .start-list > li::before { left: 14px; top: 16px; }
+}

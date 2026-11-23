@@ -195,18 +195,6 @@
   openFromHash({ focus: false });
 
   /* ------------------------------------------------------------------ */
-  /* Start-this-week checklist                                           */
-  /* ------------------------------------------------------------------ */
-  $$('.week-item input[type="checkbox"]').forEach((cb) => {
-    cb.addEventListener('change', () => {
-      const item = cb.closest('.week-item');
-      item.classList.toggle('done', cb.checked);
-      const status = $('.done-text', item);
-      if (status) status.textContent = cb.checked ? 'Done' : '';
-    });
-  });
-
-  /* ------------------------------------------------------------------ */
   /* Citations: tooltip, jump, and a way back                            */
   /* ------------------------------------------------------------------ */
   const SHORT_REFS = {
