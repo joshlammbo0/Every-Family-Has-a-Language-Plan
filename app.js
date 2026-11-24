@@ -201,7 +201,6 @@
     ortega2013: 'Ortega, L. (2013). Introduction. In <em>Understanding second language acquisition</em> (2nd ed.). Routledge. <strong>Course reading.</strong>',
     pavlenko2015: 'Pavlenko, A. (2015). The dark side of the recent polyglot hype. <em>Psychology Today</em>. <strong>Course reading.</strong>',
     gass2020: 'Gass, Behney &amp; Plonsky (2020). <em>Second language acquisition: An introductory course</em> (4th ed.), Ch. 4. <strong>Course reading.</strong>',
-    montee2026: 'Montee, M. (2026, Sept. 1). <em>Myths &amp; misconceptions</em> [LING 2050 lecture slides]. <strong>Course lecture.</strong>',
     dehouwer2009: 'De Houwer, A. (2009). <em>An introduction to bilingual development</em>. Multilingual Matters. <strong>Course reading.</strong>',
     dehouwer1999: 'De Houwer, A. (1999). Environmental factors in early bilingual development: The role of parental beliefs and attitudes. In <em>Bilingualism and migration</em> (pp. 75–96). Mouton de Gruyter.',
     king2008: 'King, Fogle &amp; Logan-Terry (2008). Family language policy. <em>Language and Linguistics Compass, 2</em>(5), 907–922.',
@@ -607,7 +606,7 @@
       short: (L, s) => s.household ? `A weekend outing in ${L}` : (s.relativesNear ? `A weekend outing in ${L} with a relative` : `A weekend ${L} event in the community`)
     },
     songs: {
-      full: (L) => `<strong>Ten minutes of ${L} songs or stories a day, together.</strong> Sitting with your child while it plays, pointing and repeating, turns listening into interaction. Audio on its own teaches young children very little; audio with you teaches more.`,
+      full: (L) => `<strong>Ten minutes of ${L} songs or stories a day, together.</strong> Sitting with your child while it plays, pointing and repeating, turns listening into interaction, and interaction with people is how young children learn language.`,
       short: (L) => `Ten minutes of ${L} songs or stories a day, together`
     }
   };

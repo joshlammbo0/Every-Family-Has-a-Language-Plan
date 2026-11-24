@@ -57,7 +57,7 @@ Semantic landmarks and heading order, a skip link, visible focus states, native 
 
 ## Research base
 
-Course sources: Ortega (2013) Introduction; Pavlenko (2015); Gass, Behney & Plonsky (2020) Ch. 4; Montee (2026) "Myths & Misconceptions" lecture; De Houwer (2009) *An Introduction to Bilingual Development*, Chs. 1–6 (page-cited).
+Course sources: Ortega (2013) Introduction; Pavlenko (2015); Gass, Behney & Plonsky (2020) Ch. 4; De Houwer (2009) *An Introduction to Bilingual Development*, Chs. 1–6 (page-cited).
 
 Independently found: King, Fogle & Logan-Terry (2008); De Houwer (2007); De Houwer (2015); Hoff et al. (2012); Byers-Heinlein (2013). Framework and supporting: Spolsky (2012); Place & Hoff (2011).
 

@@ -12,7 +12,6 @@ Legend — **C** = course reading or lecture · **O** = independently found peer
 | Ortega 2013 | Ortega, L. (2013). Introduction. *Understanding second language acquisition* (2nd ed., pp. 1–11). Routledge. https://doi.org/10.4324/9780203777282 | C | Full text of the PDF in Downloads (`Ortega (2013)_Introduction.pdf`), pages 1–11 |
 | Pavlenko 2015 | Pavlenko, A. (2015, July 15). The dark side of the recent polyglot hype. *Psychology Today*. | C | Full text of the PDF in Downloads (`Pavlenko (2015).pdf`) |
 | Gass 2020 | Gass, Behney & Plonsky (2020). *Second language acquisition: An introductory course* (4th ed.), Ch. 4, pp. 104–132. Routledge. https://doi.org/10.4324/9781315181752 | C | Full text of the PDF in Downloads (`Gass et al (2020) Chapters 3 & 4.pdf`); page numbers from the printed folios |
-| Montee 2026 | Montee, M. (2026, Sept. 1). *Myths & misconceptions* [lecture slides]. LING 2050. | C | PDF of the slides in Downloads (`LING 2050_Topic1_2_Sep1.pptx.pdf`), slide numbers as printed |
 | De Houwer 2009 | De Houwer, A. (2009). *An introduction to bilingual development*. Multilingual Matters. https://doi.org/10.21832/9781847691705 | C | Scanned PDFs of Chapters 1–2 (pp. x–26), 3–4, and 5–6 (pp. 56–73) supplied by the student on 2026-11-08; pages read directly and page numbers taken from the printed folios. DOI verified via Crossref. |
 | King 2008 | King, K. A., Fogle, L., & Logan-Terry, A. (2008). Family language policy. *Language and Linguistics Compass, 2*(5), 907–922. https://doi.org/10.1111/j.1749-818X.2008.00076.x | O | Bibliographic record and abstract via Crossref |
 | De Houwer 2007 | De Houwer, A. (2007). Parental language input patterns and children's bilingual use. *Applied Psycholinguistics, 28*(3), 411–424. https://doi.org/10.1017/S0142716407070221 | O | Bibliographic record and abstract via Crossref and the Cambridge Core page. Full text not accessed, so only abstract-level claims are used; no percentages are quoted. |
@@ -46,7 +45,7 @@ Legend — **C** = course reading or lecture · **O** = independently found peer
 | Claim | Source | Support |
 | --- | --- | --- |
 | FLPs shape children's developmental trajectories, connect with school success, and collectively determine the maintenance of minority languages | King 2008 | Abstract |
-| Family connection, heritage pride and identity are personal benefits of knowing more than one language | Montee 2026, slide 26 | Slide "Benefits of knowing more than one language" — Personal advantages |
+| When a home language is not passed on, children may be unable to communicate with grandparents and other family | De Houwer 2009, p. 71 | "Parental work": quotation from Lanza (2007: 46) listing this among the social repercussions |
 | The minority language is the one at risk (all children spoke the majority language; minority use not universal) | De Houwer 2007 | Abstract |
 | Heritage context is a distinct SLA learning context | Ortega 2013, p. 6 | "three… key contextual distinctions: foreign, second and heritage" |
 | "Harmonious bilingual development" = well-being in a language-contact situation involving young children and families | De Houwer 2015 | Abstract |
@@ -60,7 +59,7 @@ Legend — **C** = course reading or lecture · **O** = independently found peer
 | The less mixing children hear, the less they produce | De Houwer 2009, p. 63 | Key points: "The less children hear them, the less they may use them themselves" |
 | Strict 1P/1L is "an idealization"; children usually hear at least one adult alternate | De Houwer 2009, p. 12 | Paragraph following the Overview box |
 | About one family in four where children hear two languages has a child who speaks only one | De Houwer 2009, p. 8 | "In every fourth family where children hear two languages they speak only one" |
-| Smaller vocabulary in each language, comparable total | Hoff 2012 (abstract); Montee 2026, slide 13 | Both |
+| Smaller vocabulary in each language, comparable total | Hoff 2012 (abstract) | Monolinguals ahead in single-language comparisons; comparable on total vocabulary |
 | More parental mixing → smaller comprehension vocabulary at 1.5 y and marginally smaller production at 2 y, after controls; effect modest; author's interpretation re: language-separation cues; most parents mixed | Byers-Heinlein 2013 | Abstract; Study 2 discussion; general discussion |
 | OPOL "did not provide a necessary nor sufficient input condition"; 1,899 families; children 6–10 | De Houwer 2007 | Abstract, verbatim |
 | OPOL treated as one policy whose link to outcomes is studied | King 2008 | Abstract |
@@ -77,7 +76,6 @@ Legend — **C** = course reading or lecture · **O** = independently found peer
 | Children construct grammar actively; "holded" example | Gass 2020, pp. 105–106 | Examples 4-1 to 4-3 and following paragraph |
 | Simultaneous vs. sequential boundary not clear-cut | Gass 2020, pp. 111–112 | Section 4.3 |
 | "Younger is better" is an oversimplification; children better at phonology, older learners often better on syntax | Gass 2020, pp. 112–113 (McLaughlin 1978; Long 1990) | Section 4.3 |
-| Earlier start helps, with qualifications | Montee 2026, slide 12 | Slide "The earlier a second language is introduced…" |
 | Bilingual children vary considerably in how they encounter their languages | Byers-Heinlein 2013 | Introduction |
 
 ### Real life (composite scenarios)
@@ -89,7 +87,6 @@ Scenarios are invented composites. Citations inside them point to the general fi
 | Beliefs drive practices | King 2008 (abstract) |
 | Anchoring exposure matters because skill tracks relative input | Hoff 2012 (abstract) |
 | Children build language actively, not by imitation | Gass 2020, pp. 105–106 |
-| For young children, in-person interaction is required; edutainment is a supplement not a substitute | Montee 2026, slide 16 |
 | Number of speakers and share of fluent speakers each add something | Place & Hoff 2011 (abstract) |
 | Children help set the policy (negotiation) | King 2008 (abstract) |
 | Goal is harmonious bilingual development / well-being | De Houwer 2015 (abstract) |
@@ -103,7 +100,7 @@ Both reuse sources already verified above; no new sources were introduced.
 | Claim | Source | Support |
 | --- | --- | --- |
 | FLP = beliefs + actual practices + deliberate management | King 2008 (abstract); Spolsky 2012 | Same as "What is FLP?" |
-| Children build language from real back-and-forth, not drills or screens | Gass 2020, pp. 105–106; Montee 2026, slide 16 | Active construction; edutainment is a supplement, not a substitute |
+| Children build language from real back-and-forth with people, not from drills | Gass 2020, pp. 105–106; De Houwer 2009, p. 16 | Active construction rather than imitation; "learning through interaction with other people is the cornerstone of children's overall development and communicative functioning" |
 | How much of a language a child hears tracks how far they get in it | Hoff 2012 (abstract) | Relative input predicts vocabulary and grammar in that language |
 | Plans are negotiated with the child and change as life does | King 2008 (abstract) | "managed, learned, and negotiated within families" |
 | Don't turn a child's English answer into a test; family well-being matters | De Houwer 2015 (abstract) | Harmonious bilingual development framed as well-being |
@@ -118,7 +115,7 @@ The builder now writes routines around the people who can actually carry them, o
 
 | Generated claim | Source |
 | --- | --- |
-| Audio on its own teaches young children very little; audio with a person teaches more | Montee 2026, slide 16 (in-person exposure needed; edutainment is a supplement) |
+| Interaction with people is how young children learn language (songs routine) | De Houwer 2009, p. 16 |
 | How much of a language a child hears predicts how many words they know in it (baby-stage note) | Hoff 2012 (abstract) |
 | A different speaker adds something that extra hours from the same speaker do not | Place & Hoff 2011 (abstract: number of speakers as a unique predictor) |
 | Both-parents-use-the-heritage-language homes had the best odds in a study of nearly 1,900 families | De Houwer 2007 (abstract) |
@@ -129,7 +126,7 @@ Sentences that are practical advice rather than research claims (for example "ro
 
 ### Copy and structure changes in the same pass
 - Myths are now question titles with a visible one-sentence answer; the longer evidence, caveats, and citations are unchanged underneath, and the original "what parents are often told" wording is kept inside each panel.
-- "Why it matters" merged the two relationship cards; both citations (Montee 2026 slide 26; De Houwer 2015) remain.
+- "Why it matters" merged the two relationship cards; the De Houwer 2015 citation remains; the family-connection point now cites De Houwer 2009, p. 71.
 - "Our course highlighted" now reads "highlighted in the course this project grew out of"; "harmonious bilingual development" is glossed on first use.
 - Fonts are self-hosted (SIL Open Font License copies of Fraunces and Inter), so the page makes no third-party requests.
 
@@ -148,6 +145,18 @@ The "What this guide deliberately does not promise" box (cognitive advantages, M
 ### "Start this week" rewritten as four static suggestions (2026-11-23)
 The six-item checklist became four plain suggestions. Two carry citations because they rest on a finding: "Bring in another person" (Place & Hoff 2011: number of speakers) and "Follow what your child enjoys... a real conversation, not a lesson" (Gass 2020, pp. 105-106: children build language actively, not by drill). "Pick one routine" and "Check in after a few weeks" are advice with no factual claim, so they carry none. The earlier table for this section describes the old six-item version.
 
+### Lecture-slide citations removed (2026-11-24, instructor feedback)
+Prof. Montee reviewed the sources, approved them, and asked that the citations to her September 1 lecture slides be left out because the points are supported by other sources. All four in-text slide citations, the slide reference entry, and its tooltip were removed. What each claim rests on now:
+
+| Claim | Was | Now |
+| --- | --- | --- |
+| Bilingual children know fewer words in each language but a comparable total | Hoff 2012 + slide 13 | Hoff 2012 (abstract), unchanged wording |
+| Younger learners tend toward better pronunciation; older learners often do better with grammar | Gass 2020, pp. 112–113 + slide 12 | Gass 2020, pp. 112–113; wording tightened from "can learn many aspects of language quickly and well" to match the source |
+| Family connection across generations | slide 26 | De Houwer 2009, p. 71 (quoting Lanza, 2007): inability to communicate with grandparents and other family as a cost of not passing a language on |
+| Children build language from real back-and-forth with people, not drills | Gass 2020, pp. 105–106 + slide 16 | Gass 2020, pp. 105–106 + De Houwer 2009, p. 16 |
+
+Dropped rather than re-sourced: the claim that screens and apps do not substitute for in-person interaction ("or screens" in the quick guide; "Audio on its own teaches young children very little" in one builder routine). No source read for this project supports it. Lightbown & Spada (2006) or King & Mackey (2007) may, but neither was available to verify, so neither is cited.
+
 ## Deliberately avoided
 - Specific percentages from De Houwer (2007) — full text not accessed.
 - Claims about cognitive or academic advantages as a reason to raise a child bilingually.
@@ -156,6 +165,6 @@ The six-item checklist became four plain suggestions. Two carry citations becaus
 
 ## Items to confirm before submission
 1. ~~De Houwer (2009) page numbers~~ — **done 2026-11-08** from the scanned chapters; all De Houwer (2009) citations on the site now carry page numbers, and "impact belief" is cited to De Houwer (1999).
-2. **Lecture slide citation format** — confirm with Prof. Montee how she prefers lecture slides to be cited (the site uses an APA 7 "lecture slides" format with the slide date).
+2. ~~Lecture slide citation format~~ — **resolved 2026-11-24:** Prof. Montee asked that the slide citations be left out; they have been removed.
 3. **Byers-Heinlein (2013)** was in your Downloads folder but is not listed on the syllabus. The site lists it as an independently found article. If it was in fact posted on Canvas as a course reading, move it to the "Course readings" group on the site (and this would give you a fourth course source).
 4. Optional: if you can access the full text of **De Houwer (2007)** through Lauinger Library, you could add the exact success rates by input pattern to Myth 2; they make the point vividly.
